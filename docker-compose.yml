@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: applicants_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_APP: app
+      FLASK_ENV: development
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: applicants_db
+      POSTGRES_HOST: db
+      PYTHONPATH: /app
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+
+volumes:
+  pgdata:

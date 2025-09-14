@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Applicant Form</title>
+</head>
+<body>
+    <h1>Applicant Form</h1>
+    <form method="POST" action="/api/add">
+        <label>Name: <input type="text" name="name" required></label><br>
+        <label>Email: <input type="email" name="email" required></label><br>
+        <label>Score: <input type="number" name="score" step="0.01" required></label><br>
+        <button type="submit">Add Applicant</button>
+    </form>
+</body>
+</html>
